@@ -29,6 +29,7 @@ angular.module('7minWorkout').controller('WorkoutController', WorkoutController)
 angular.module('7minWorkout').controller('WorkoutController', ['$scope', '$interval', function ($scope, $interval) {
     //Controller implementations
     console.log('WorkoutController created.');
+    
     function WorkoutPlan(args) {
         this.exercises = [];
         this.name = args.name;
@@ -48,8 +49,8 @@ angular.module('7minWorkout').controller('WorkoutController', ['$scope', '$inter
         this.nameSound = args.Sound;
     }
 
-      var restExercise;
-      var workoutPlan;
+    var restExercise;
+    var workoutPlan;
 
     var createWorkout = function () {
         var workout = new WorkoutPlan({
@@ -203,7 +204,18 @@ angular.module('7minWorkout').controller('WorkoutController', ['$scope', '$inter
         });
         //(TRUNCATED) other 11 workout exercise data.
         return workout;
-    }
+    };
+    var getNextExercise = function (currentExercisePlan) {
+        var nextExercise = null;
+        if (currentExercisePlan === restExercise) {
+            nextExercise = workoutPlan.exercises.shift();
+        } else {
+            if (workoutPlan.exercises.length != 0) {
+                nextExercise = restExercise;
+            }
+        }
+        return nextExercise;
+    };
     var startWorkout = function () {
         workoutPlan = createWorkout();
         restExercise = {
