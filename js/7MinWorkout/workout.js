@@ -1,31 +1,3 @@
-
-
-/* angular.module('7minWorkout').controller('WorkoutController',['$scope', function ($scope) {
-    function Exercices(args) {
-        this.name = args.name;
-        this.title = args.name;
-        this.description = args.description;
-        this.image = args.image;
-        this.related = {};
-        this.related.videos = arg.videos;
-        this.nameSound=args.nameSound;
-        this.procedure=args.procedure;
-    }
-    function WorkoutPlan(args) {
-        this.exercises=[];
-        this.name=args.name;
-        this.title=args.title;
-        this.restBetweenExercise=args.restBetweenExercise;
-    }
-}]); */
-
-/* function WorkoutController($scope) {
-// Controller implementation
-}
-WorkoutController['$inject'] = ['$scope'];
-angular.module('7minWorkout').controller('WorkoutController', WorkoutController); */
-
-
 angular.module('7minWorkout').controller('WorkoutController', ['$scope', '$interval', function ($scope, $interval) {
     //Controller implementations
     console.log('WorkoutController created.');
@@ -47,6 +19,7 @@ angular.module('7minWorkout').controller('WorkoutController', ['$scope', '$inter
         this.related.videos = args.videos;
         this.related.variations = args.variations;
         this.nameSound = args.Sound;
+        this.procedure=args.procedure;
     }
 
     var restExercise;
@@ -64,9 +37,10 @@ angular.module('7minWorkout').controller('WorkoutController', ['$scope', '$inter
                 title: "Jumping Jacks",
                 description: "Jumping Jacks.",
                 image: "img/JumpingJacks.png",
-                videos: [],
+                videos: ['https://www.youtube.com/watch?v=c4DAnQ6DtF8',
+                'https://www.youtube.com/watch?v=RB5Mk_rcFC0'],
                 variations: [],
-                procedure: ""
+                procedure: "Assume an erect position, with while in air, bring your ise your arms up over your head."
             }),
             duration: 30
         });
@@ -78,6 +52,7 @@ angular.module('7minWorkout').controller('WorkoutController', ['$scope', '$inter
                 image: "img/wallsit.png",
                 videos: [],
                 variations: [],
+                 procedure: ""
 
             }),
             duration: 30
