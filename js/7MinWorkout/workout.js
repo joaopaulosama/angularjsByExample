@@ -37,8 +37,8 @@ angular.module('7minWorkout').controller('WorkoutController', ['$scope', '$inter
                 title: "Jumping Jacks",
                 description: "Jumping Jacks.",
                 image: "img/JumpingJacks.png",
-                videos: ['https://www.youtube.com/watch?v=c4DAnQ6DtF8',
-                    'https://www.youtube.com/watch?v=RB5Mk_rcFC0'],
+                videos: ['https://www.youtube.com/embed/c4DAnQ6DtF8',
+                    'https://www.youtube.com/embed/RB5Mk_rcFC0'],
                 variations: [],
                 procedure: "Assume an erect position, with while in air, bring your ise your arms up over your head."
             }),
@@ -63,7 +63,7 @@ angular.module('7minWorkout').controller('WorkoutController', ['$scope', '$inter
                 title: "Push Up",
                 description: "Discription about pushup.",
                 image: "img/pushup.png",
-                videos: ["https://www.youtube.com/watch?v=Eh00_rniF8E", "https://www.youtube.com/watch?v=ZWdBqFLNljc", "https://www.youtube.com/watch?v=UwRLWMcOdwI", "https://www.youtube.com/watch?v=ynPwl6qyUNM", "https://www.youtube.com/watch?v=OicNTT2xzMI"],
+                videos: ["https://www.youtube.com/embed/Eh00_rniF8E", "https://www.youtube.com/embed/ZWdBqFLNljc", "https://www.youtube.com/embed/UwRLWMcOdwI", "https://www.youtube.com/embed/ynPwl6qyUNM", "https://www.youtube.com/embed/OicNTT2xzMI"],
                 variations: ["Planche push-ups", "Knuckle push-ups", "Maltese push-ups", "One arm versions"],
                 procedure: ""
             }),
