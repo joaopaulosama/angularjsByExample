@@ -1,7 +1,6 @@
 angular.module('7minWorkout').controller('WorkoutController', ['$scope', '$interval', function ($scope, $interval) {
     //Controller implementations
     console.log('WorkoutController created.');
-    
     function WorkoutPlan(args) {
         this.exercises = [];
         this.name = args.name;
@@ -19,7 +18,7 @@ angular.module('7minWorkout').controller('WorkoutController', ['$scope', '$inter
         this.related.videos = args.videos;
         this.related.variations = args.variations;
         this.nameSound = args.Sound;
-        this.procedure=args.procedure;
+        this.procedure = args.procedure;
     }
 
     var restExercise;
@@ -28,7 +27,7 @@ angular.module('7minWorkout').controller('WorkoutController', ['$scope', '$inter
     var createWorkout = function () {
         var workout = new WorkoutPlan({
             name: "7MinWorkout",
-            title: "7 min Workout",
+            title: "7 min Wrokout",
             restBetweenExercise: 10
         });
         workout.exercises.push({
@@ -38,7 +37,7 @@ angular.module('7minWorkout').controller('WorkoutController', ['$scope', '$inter
                 description: "Jumping Jacks.",
                 image: "img/JumpingJacks.png",
                 videos: ['https://www.youtube.com/watch?v=c4DAnQ6DtF8',
-                'https://www.youtube.com/watch?v=RB5Mk_rcFC0'],
+                    'https://www.youtube.com/watch?v=RB5Mk_rcFC0'],
                 variations: [],
                 procedure: "Assume an erect position, with while in air, bring your ise your arms up over your head."
             }),
@@ -52,7 +51,7 @@ angular.module('7minWorkout').controller('WorkoutController', ['$scope', '$inter
                 image: "img/wallsit.png",
                 videos: [],
                 variations: [],
-                 procedure: ""
+                procedure: ""
 
             }),
             duration: 30
@@ -179,18 +178,7 @@ angular.module('7minWorkout').controller('WorkoutController', ['$scope', '$inter
         });
         //(TRUNCATED) other 11 workout exercise data.
         return workout;
-    };
-    var getNextExercise = function (currentExercisePlan) {
-        var nextExercise = null;
-        if (currentExercisePlan === restExercise) {
-            nextExercise = workoutPlan.exercises.shift();
-        } else {
-            if (workoutPlan.exercises.length != 0) {
-                nextExercise = restExercise;
-            }
-        }
-        return nextExercise;
-    };
+    }
     var startWorkout = function () {
         workoutPlan = createWorkout();
         restExercise = {
@@ -210,6 +198,16 @@ angular.module('7minWorkout').controller('WorkoutController', ['$scope', '$inter
         $interval(function () {
             ++$scope.currentExerciseDuration;
         }, 1000, $scope.currentExercise.duration);
+    };
+    var getNextExercise = function (currentExercisePlan) {
+        var nextExercise = null;
+        if (currentExercisePlan === restExercise) {
+            nextExercise = workoutPlan.exercises.shift();
+        } else {
+            if (workoutPlan.exercises.length != 0) {
+                nextExercise = restExercise;
+            }
+        } return nextExercise;
     };
     var init = function () {
         startWorkout();
