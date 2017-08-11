@@ -1,6 +1,7 @@
 angular.module('7minWorkout').controller('WorkoutController', ['$scope', '$interval', function ($scope, $interval) {
     //Controller implementations
     console.log('WorkoutController created.');
+
     function WorkoutPlan(args) {
         this.exercises = [];
         this.name = args.name;
@@ -182,7 +183,7 @@ angular.module('7minWorkout').controller('WorkoutController', ['$scope', '$inter
     var startWorkout = function () {
         workoutPlan = createWorkout();
         restExercise = {
-            details: new Exercise({
+            exercise: new Exercise({
                 name: "rest",
                 title: "Relax!",
                 description: "Relax a bit!",
@@ -197,7 +198,15 @@ angular.module('7minWorkout').controller('WorkoutController', ['$scope', '$inter
         $scope.currentExerciseDuration = 0;
         $interval(function () {
             ++$scope.currentExerciseDuration;
-        }, 1000, $scope.currentExercise.duration);
+        }, 1000, $scope.currentExercise.duration)
+            .then(function () {
+                var next = getNextExercise(exercisePlan);
+                if (next) {
+                    startExercise(next);
+                } else {
+                    console.log('Workout complete!');
+                }
+            });
     };
     var getNextExercise = function (currentExercisePlan) {
         var nextExercise = null;
@@ -209,6 +218,16 @@ angular.module('7minWorkout').controller('WorkoutController', ['$scope', '$inter
             }
         } return nextExercise;
     };
+    $scope.$watch('currentExerciseDuration', function (nVal) {
+        if (nVal == $scope.currentExercise.duration) {
+            var next = getNextExercise($scope.currentExercise);
+            if (next) {
+                startExercise(next);
+            } else {
+                console.log("Workout complete!");
+            }
+        }
+    });
     var init = function () {
         startWorkout();
     };
