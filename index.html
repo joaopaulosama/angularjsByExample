@@ -29,6 +29,7 @@
         </div>
     </div>
     <div class="container body-content app-container">
+        
         <div ng-view></div>
         <div class="row">
             <div id="description-panel" class="col-sm-2" ng-include ="'partials/description-panel.html'"> </div>
@@ -36,13 +37,13 @@
             <div id="exercice-pane" class="col-sm-7">
                 <div class="row workout-content">
                     <div class="workout-display-div">
+                        <h4>Workout Remaining - {{workoutTimeRemaining |secondsToTime}}</h4>
                         <h1>{{currentExercise.exercise.title}}</h1>
                         <img class="img-responsive" ng-src="{{currentExercise.exercise.image}}" alt="">
                         <div class="progress time-progress">
                             <div class="progress-bar" aria-valuemin="0" aria-valuemax="{{currentExercise.duration}}" ng-style="{'width':(currentExerciseDuration/currentExercise.duration)* 100 + '%'}"></div>
                         </div>
                     </div>
-                    <h1>Time Remaining: {{ currentExercise.duration-currentExerciseDuration}}</h1>
                 </div>
             </div>
            <div id="video-panel" class="col-sm-2" ng-include ="'partials/video-panel.html'"></div>
@@ -51,6 +52,7 @@
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-route.js"></script>
         <script src="js/app.js"></script>
         <script src="js/7MinWorkout/workout.js"></script>
+        <script src="js/7MinWorkout/filters.js"></script>
     </div>
 </body>
 
