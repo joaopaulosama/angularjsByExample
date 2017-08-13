@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="css/app.css" />
 </head>
 
-<body  ng-controller="WorkoutController">
+<body ng-controller="WorkoutController">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
@@ -29,11 +29,11 @@
         </div>
     </div>
     <div class="container body-content app-container">
-        
+
         <div ng-view></div>
         <div class="row">
-            <div id="description-panel" class="col-sm-2" ng-include ="'partials/description-panel.html'"> </div>
-             
+            <div id="description-panel" class="col-sm-2" ng-include="'partials/description-panel.html'"> </div>
+
             <div id="exercice-pane" class="col-sm-7">
                 <div class="row workout-content">
                     <div class="workout-display-div">
@@ -43,10 +43,16 @@
                         <div class="progress time-progress">
                             <div class="progress-bar" aria-valuemin="0" aria-valuemax="{{currentExercise.duration}}" ng-style="{'width':(currentExerciseDuration/currentExercise.duration)* 100 + '%'}"></div>
                         </div>
+                        <div class="row">
+                            <h3 class="col-sm-6 text-left">Time Remaining:<strong>{{currentExercise.duration-currentExerciseDuration}}</strong>
+                            </h3>
+                            <h3 class="col-sm-6 text-right" ng-if="currentExercise.exercise.name=='rest'">Next up:<strong>{{workoutPlan.exercises[0].exercise.name}}</strong>
+                            </h3>
+                        </div>
                     </div>
                 </div>
             </div>
-           <div id="video-panel" class="col-sm-2" ng-include ="'partials/video-panel.html'"></div>
+            <div id="video-panel" class="col-sm-2" ng-include="'partials/video-panel.html'"></div>
         </div>
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-route.js"></script>
